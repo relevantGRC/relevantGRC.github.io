@@ -23,6 +23,52 @@
       --radius: 8px;
     }
 
+     /* Add these inside your <style> tag */
+    :root {
+      --card-bg: #0d1117;    
+      --label-color: #6e7681; 
+      --accent-teal: #00f5d4; 
+      --border-muted: #21262d;
+    }
+
+      .info-card {
+      background-color: var(--card-bg);
+      padding: 24px;
+      border-radius: 8px;
+      max-width: 450px;
+  /* Use JetBrains Mono for that technical feel */
+      font-family: 'JetBrains Mono', monospace; 
+      margin: 20px 0;
+    }
+
+      .info-row {
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+
+      .info-row:last-child {
+        border-bottom: none;
+    }
+  
+      .info-label {
+        color: var(--label-color);
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+        .info-val {
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+        .info-val.highlight {
+                  color: var(--accent-teal);
+    }
+    
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     
