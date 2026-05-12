@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── BACKGROUND GRID ─── */
     body::before {
       content: "";
       position: fixed;
@@ -45,7 +44,6 @@
       pointer-events: none;
     }
 
-    /* ─── NAVIGATION ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -62,217 +60,74 @@
 
     .nav-logo { font-weight: 800; font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: -1px; }
     .nav-logo span { color: var(--accent); }
-
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 11px; color: var(--text2); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
     .nav-links a:hover { color: var(--accent); }
 
-    .nav-badge {
-      background: var(--accent);
-      color: white !important;
-      padding: 8px 18px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
     .nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
     .nav-hamburger span { width: 25px; height: 2px; background: var(--text); transition: 0.3s; }
 
-    /* ─── HERO CONTAINER ─── */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
     
-    #hero {
-      min-height: 95vh;
-      display: flex;
-      align-items: center;
-      padding-top: 80px;
-    }
-
-    .hero-grid {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 60px;
-      width: 100%;
-    }
-
+    #hero { min-height: 95vh; display: flex; align-items: center; padding-top: 80px; }
+    .hero-grid { display: flex; justify-content: space-between; align-items: center; gap: 60px; width: 100%; }
     .hero-content { flex: 1.2; }
-    .hero-label { 
-      color: var(--accent); 
-      font-family: var(--mono); 
-      font-size: 14px; 
-      margin-bottom: 20px; 
-      display: flex; 
-      align-items: center; 
-      gap: 12px;
-    }
+    .hero-label { color: var(--accent); font-family: var(--mono); font-size: 14px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
     .hero-label::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
 
     h1 { font-size: clamp(3.5rem, 8vw, 6rem); line-height: 0.85; margin: 0 0 35px 0; font-weight: 800; letter-spacing: -5px; }
     h1 span { color: var(--accent); }
-
-    .hero-description {
-      color: var(--text2);
-      max-width: 500px;
-      font-size: 17px;
-      line-height: 1.7;
-      margin-bottom: 45px;
-      border-left: 2px solid var(--accent);
-      padding-left: 25px;
-    }
-
-    .cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-.cert-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 180px;
-}
-
-.cert-card:hover {
-  border-color: var(--accent);
-  background: var(--bg3);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.cert-org {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 0.5rem;
-}
-
-.cert-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-}
-
-.cert-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-}
-
-.cert-id {
-  font-size: 11px;
-  color: var(--text3);
-  font-family: var(--mono);
-}
-
-.cert-verify {
-  font-size: 12px;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.cert-card svg {
-  width: 14px;
-  height: 14px;
-  vertical-align: middle;
-  margin-left: 4px;
-}
+    .hero-description { color: var(--text2); max-width: 500px; font-size: 17px; line-height: 1.7; margin-bottom: 45px; border-left: 2px solid var(--accent); padding-left: 25px; }
     
-    /* ─── THE STATS CARD ─── */
-    .stats-card {
-      flex: 0.8;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      min-width: 380px;
-      overflow: hidden;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-    }
-
+    .stats-card { flex: 0.8; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; min-width: 380px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
     .stats-grid { display: grid; grid-template-columns: 1fr 1fr; }
-
-    .stat-item {
-      padding: 45px 25px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
+    .stat-item { padding: 45px 25px; text-align: center; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .stat-item:nth-child(even) { border-right: none; }
     .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
-
     .stat-value { font-size: 34px; font-weight: 800; color: var(--accent); display: block; margin-bottom: 6px; }
     .stat-label { font-size: 10px; text-transform: uppercase; color: var(--text3); letter-spacing: 2px; font-family: var(--mono); }
 
-    .status-bar {
-      background: var(--accent-muted);
-      padding: 18px;
-      font-size: 11px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      font-weight: 600;
-    }
+    .status-bar { background: var(--accent-muted); padding: 18px; font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 600; }
     .status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 12px var(--accent); animation: pulse 2s infinite; }
-
     @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-    /* ─── SECTIONS ─── */
     section { padding: 120px 0; border-top: 1px solid var(--border); }
     .section-title { font-size: 36px; font-weight: 800; margin-bottom: 4rem; letter-spacing: -1.5px; }
     .section-title span { color: var(--accent); }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .skill-card { background: var(--bg2); padding: 2.5rem; border-radius: var(--radius); border-left: 3px solid var(--accent); }
+    .skill-card { background: var(--bg2); padding: 2.5rem; border-radius: var(--radius); border-left: 3px solid var(--accent); height: 100%; }
     .skill-card h3 { font-size: 14px; text-transform: uppercase; margin-bottom: 1.5rem; color: var(--accent); font-family: var(--mono); }
     .skill-list { list-style: none; }
     .skill-list li { margin-bottom: 0.8rem; color: var(--text2); font-size: 15px; display: flex; gap: 10px; }
     .skill-list li::before { content: "→"; color: var(--accent); }
 
-    /* ─── CONTACT LINKS ─── */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .cert-card { background: var(--bg2); border: 1px solid var(--border); padding: 1.5rem; border-radius: var(--radius); text-decoration: none; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; min-height: 180px; }
+    .cert-card:hover { border-color: var(--accent); transform: translateY(-5px); background: var(--bg3); }
+    .cert-org { font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .cert-name { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .cert-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .cert-id { font-size: 10px; color: var(--text3); font-family: var(--mono); }
+    .cert-verify { font-size: 11px; color: var(--accent); font-weight: 600; }
+
     .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 3rem; }
-    .contact-link {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 24px; background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--radius); text-decoration: none; transition: 0.3s;
-    }
+    .contact-link { display: flex; align-items: center; justify-content: space-between; padding: 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: 0.3s; }
     .contact-link:hover { border-color: var(--accent); transform: translateY(-3px); background: var(--bg3); }
     .contact-link-label { font-size: 10px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
     .contact-link-val { font-size: 14px; color: var(--text); font-family: var(--mono); }
 
-    .btn { display: inline-block; padding: 14px 30px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.3s; border: none; cursor: pointer; }
+    .btn { display: inline-block; padding: 14px 30px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.3s; border: none; cursor: pointer; text-transform: uppercase; }
     .btn-primary { background: var(--accent); color: white; }
-    .btn-secondary { border: 1px solid var(--border); color: var(--text2); margin-left: 15px; }
-    .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-secondary { border: 1px solid var(--border); color: var(--text2); margin-left: 10px; }
 
     footer { padding: 60px; text-align: center; color: var(--text3); font-size: 12px; border-top: 1px solid var(--border); }
 
-    /* ─── MOBILE RESPONSIVENESS ─── */
     @media (max-width: 968px) {
       .hero-grid { flex-direction: column; text-align: center; gap: 40px; }
       .hero-description { margin: 0 auto 40px auto; border-left: none; padding-left: 0; }
       .stats-card { min-width: 100%; width: 100%; }
-      .nav-links {
-        position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px);
-        background: var(--bg); flex-direction: column; padding: 40px; transition: 0.4s;
-      }
+      .nav-links { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--bg); flex-direction: column; padding: 40px; transition: 0.4s; }
       .nav-links.active { right: 0; }
       .nav-hamburger { display: flex; }
       .grid-2 { grid-template-columns: 1fr; }
@@ -298,7 +153,6 @@
     </div>
   </nav>
 
-  <!-- ─── HERO ─── -->
   <section id="hero">
     <div class="container">
       <div class="hero-grid">
@@ -307,12 +161,12 @@
           <h1>Nathaniel<br><span>Konu</span></h1>
           <p class="hero-description">
             Transforming manual governance into automated security architecture. 
-            Bridging the gap between GRC and DevOps through Compliance lead engineering.
+            Bridging the gap between GRC and DevOps through Compliance-led engineering.
           </p>
           <div class="hero-btns">
-            <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
-            <a href="#certs" class="btn btn-secondary">CERTIFICATION</a>
-            <a href="#contact" class="btn btn-secondary">CONTACT</a>
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#certs" class="btn btn-secondary">Credentials</a>
+            <a href="#contact" class="btn btn-secondary">Contact</a>
           </div>
         </div>
 
@@ -328,7 +182,7 @@
             </div>
             <div class="stat-item">
               <span class="stat-value">ISO</span>
-              <span class="stat-label">Auditor</span>
+              <span class="stat-label">Lead Auditor</span>
             </div>
             <div class="stat-item">
               <span class="stat-value">∞</span>
@@ -344,7 +198,6 @@
     </div>
   </section>
 
-  <!-- ─── ABOUT ─── -->
   <section id="about">
     <div class="container">
       <div class="grid-2">
@@ -352,26 +205,21 @@
           <h2 class="section-title">Profile</h2>
           <p style="color: var(--text2); margin-bottom: 1.5rem;">
             I’m a senior Governance, Risk, and Compliance (GRC) analyst with deep expertise in building and scaling enterprise security and compliance programs across research, federal, and emerging AI-driven environments. 
-            With extensive hands-on experience in frameworks like ISO 27001, ISO 27701, SOC 2, NIST, and evolving standards such as ISO/IEC 42001, I specialize in translating complex regulatory requirements into practical, 
-            measurable, and audit-ready solutions.
+          </p>
+          <p style="color: var(--text2); margin-bottom: 1.5rem;">
+            Specializing in translating complex regulatory requirements into audit-ready solutions, I design end-to-end management systems—from ISMS implementation to Policy-as-Code integration in modern DevOps ecosystems.
           </p>
           <p style="color: var(--text2);">
-            My strength lies in designing and operationalizing end-to-end management systems — from ISMS implementation and control design to metrics development, internal audits, and continuous improvement. 
-            I’ve led initiatives to mature security awareness programs, develop compliance dashboards, and integrate governance into modern development ecosystems using approaches like Policy as Code.
-            What sets me apart: I don’t treat compliance as a checkbox exercise. I focus on building sustainable, scalable programs that align security with business objectives. 
-          </p>
-          <p style="color: var(--text2);">
-            Whether it’s developing executive-level reporting, enabling teams through clear processes and training, or aligning cross-functional stakeholders, I bring both strategic vision and execution discipline.
-            I bridge the gap between technical teams, leadership, and auditors, delivering clarity, trust, and measurable security outcomes in complex, high-stakes environments.
+            I focus on building sustainable, scalable programs that align security with business objectives, bridging the gap between technical teams, leadership, and auditors.
           </p>
         </div>
         <div class="skill-card">
-          <h3>Core Frameworks</h3>
+          <h3>Core Standards</h3>
           <ul class="skill-list">
-            <li>ISO 27001, 27017/18,27701, & 42001</li>
-            <li>NIST</li>
-            <li>CJIS v6</li>
-            <li>FedRAMP</li>
+            <li>ISO 27001, 27701, & 42001 (AI)</li>
+            <li>NIST 800-53 & CSF</li>
+            <li>SOC 2 Type II</li>
+            <li>CJIS v6 & FedRAMP</li>
             <li>Regulatory Mapping & GRC Logic</li>
           </ul>
         </div>
@@ -379,92 +227,87 @@
     </div>
   </section>
 
-   <!-- ─── EXPERTISE ─── -->
   <section id="expertise">
     <div class="container">
       <h2 class="section-title">Expertise</h2>
       <div class="grid-2">
         <div class="skill-card">
-          <h3>Compliance & GRC</h3>
+          <h3>Compliance Automation</h3>
           <ul class="skill-list">
-            <li>ISO 27001, 27017/18,27701, & 42001</li>
-            <li>NIST</li>
-            <li>CJIS v6</li>
-            <li>FedRAMP</li>
-            <li>Regulatory Mapping & GRC Logic</li>
+            <li>Policy-as-Code (OPA/Rego)</li>
+            <li>Infrastructure Auditing (Checkov)</li>
+            <li>Automated Control Testing</li>
+            <li>Continuous Compliance Monitoring</li>
+            <li>GRC Tooling Integration</li>
           </ul>
         </div>
         <div class="skill-card">
-          <h3>Knowledge Architecture</h3>
+          <h3>Security Governance</h3>
           <ul class="skill-list">
-            <li>ISO 27001, 27017/18,27701, & 42001</li>
-            <li>NIST</li>
-            <li>CJIS v6</li>
-            <li>FedRAMP</li>
-            <li>Regulatory Mapping & GRC Logic</li>
+            <li>ISMS Implementation & Management</li>
+            <li>Human Risk Management</li>
+            <li>Vendor Risk Management (TPRM)</li>
+            <li>Incident Response Frameworks</li>
+            <li>Executive Metrics & Reporting</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-<!-- ─── CERTIFICATIONS ─── -->
-  <section id="certifications">
-  <div class="container">
-    <div class="section-header">
+  <section id="certs">
+    <div class="container">
       <div class="hero-label">// Credentials</div>
       <h2 class="section-title">Professional <span>Certifications</span></h2>
+      <div class="cert-grid">
+        <a href="https://www.credly.com/badges/42d465fe-3c72-47a5-a1ad-4627878a3f53/public_url" target="_blank" rel="noopener" class="cert-card">
+          <div class="cert-org">ISC²</div>
+          <div class="cert-name">CISSP</div>
+          <div class="cert-footer"><span class="cert-id">ID #921058</span><span class="cert-verify">Verify ↗</span></div>
+        </a>
+        <a href="https://www.credly.com/badges/31f9a72b-d3f8-4db2-ba15-3b14b842ee9a" target="_blank" rel="noopener" class="cert-card">
+          <div class="cert-org">ISACA</div>
+          <div class="cert-name">CISM</div>
+          <div class="cert-footer"><span class="cert-id">ID #221843622</span><span class="cert-verify">Verify ↗</span></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="cert-card">
+          <div class="cert-org">PECB</div>
+          <div class="cert-name">ISO 27001 Lead Auditor</div>
+          <div class="cert-footer"><span class="cert-id">Certified</span><span class="cert-verify">Verify ↗</span></div>
+        </a>
+        <a href="https://www.credly.com/badges/c39f3ce0-9443-4f78-b936-0a9f867ed8b6" target="_blank" rel="noopener" class="cert-card">
+          <div class="cert-org">AWS</div>
+          <div class="cert-name">AI Practitioner</div>
+          <div class="cert-footer"><span class="cert-id">Certified</span><span class="cert-verify">Verify ↗</span></div>
+        </a>
+        <a href="https://www.credly.com/badges/d7e7b3e2-7566-4454-8e6a-fb7de412eb42" target="_blank" rel="noopener" class="cert-card">
+          <div class="cert-org">CompTIA</div>
+          <div class="cert-name">Security+</div>
+          <div class="cert-footer"><span class="cert-id">Certified</span><span class="cert-verify">Verify ↗</span></div>
+        </a>
+      </div>
     </div>
-    <div class="cert-grid">
-      <a href="https://www.credly.com/badges/42d465fe-3c72-47a5-a1ad-4627878a3f53/public_url" target="_blank" rel="noopener" class="cert-card">
-        <div class="cert-org">PECB</div>
-        <div class="cert-name">ISO 27001 Lead Auditor</div>
-        <div class="cert-footer">
-          <span class="cert-id">ID #921058</span>
-          <span class="cert-verify">Verify ↗</span>
-        </div>
-      </a>
-      <a href="https://www.credly.com/badges/31f9a72b-d3f8-4db2-ba15-3b14b842ee9a" target="_blank" rel="noopener" class="cert-card">
-        <div class="cert-org">ISACA</div>
-        <div class="cert-name">CISM</div>
-        <div class="cert-footer">
-          <span class="cert-id">ID #221843622</span>
-          <span class="cert-verify">Verify ↗</span>
-        </div>
-      </a>
-      <a href="https://www.credly.com/badges/8c8dc631-0f00-4e77-95e2-359a6f87c1a8" target="_blank" rel="noopener" class="cert-card">
-        <div class="cert-org">AWS</div>
-        <div class="cert-name">Cloud Practitioner</div>
-        <div class="cert-footer">
-          <span class="cert-id">AWS Certified</span>
-          <span class="cert-verify">Verify ↗</span>
-        </div>
-      </a>
-      <a href="https://www.credly.com/badges/c39f3ce0-9443-4f78-b936-0a9f867ed8b6" target="_blank" rel="noopener" class="cert-card">
-        <div class="cert-org">AWS</div>
-        <div class="cert-name">AI Practitioner</div>
-        <div class="cert-footer">
-          <span class="cert-id">AWS Certified</span>
-          <span class="cert-verify">Verify ↗</span>
-        </div>
-       </a>
-       <a href="https://www.credly.com/badges/d7e7b3e2-7566-4454-8e6a-fb7de412eb42" target="_blank" rel="noopener" class="cert-card">
-        <div class="cert-org">CompTIA</div>
-        <div class="cert-name">Security+</div>
-        <div class="cert-footer">
-          <span class="cert-id">Certified</span>
-          <span class="cert-verify">Verify ↗</span>
-        </div>
-       </a>
-     </div>
-   </div>
-  </section> 
+  </section>
 
- <!-- ─── CONTACT ─── --> 
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Technical <span>Projects</span></h2>
+      <div class="grid-2">
+        <div class="skill-card">
+          <h3>GRC Governance Vault</h3>
+          <p style="color: var(--text2); font-size: 14px;">A structured Obsidian vault system designed for managing ISO 27001 and NIST compliance documentation with JSON-mapped logic.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Policy-as-Code Lab</h3>
+          <p style="color: var(--text2); font-size: 14px;">Automating Terraform infrastructure scans using Checkov and Rego policies to ensure "Security by Design."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container" style="text-align: center;">
       <h2 class="section-title">Secure the <span>Connection</span></h2>
-      
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/nkonu/" target="_blank" class="contact-link">
           <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">linkedin.com/in/nkonu</div></div>
@@ -476,10 +319,6 @@
         </a>
         <a href="https://github.com/relevantGRC" target="_blank" class="contact-link">
           <div><div class="contact-link-label">GitHub</div><div class="contact-link-val">relevantGRC</div></div>
-          <span>›</span>
-        </a>
-        <a href="https://relevantGRC.github.io/Resume.pdf" target="_blank" class="contact-link">
-          <div><div class="contact-link-label">Resume</div><div class="contact-link-val">Download PDF</div></div>
           <span>›</span>
         </a>
       </div>
@@ -500,9 +339,7 @@
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
       } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
+        spans[0].style.transform = 'none'; spans[1].style.opacity = '1'; spans[2].style.transform = 'none';
       }
     }
   </script>
