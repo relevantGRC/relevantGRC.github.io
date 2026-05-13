@@ -484,5 +484,25 @@
     }
   </script>
 
+  <!-- All your HTML content above -->
+  
+  <script>
+    function toggleVideo(videoId, arrowId) {
+      const videoDiv = document.getElementById(videoId);
+      const arrow = document.getElementById(arrowId);
+      
+      // Debugging line: Open your browser console (F12) to see if this triggers
+      console.log("Toggling video:", videoId);
+  
+      if (videoDiv.style.display === "none" || videoDiv.style.display === "") {
+        videoDiv.style.display = "block";
+        arrow.style.transform = "rotate(90deg)";
+      } else {
+        videoDiv.style.display = "none";
+        arrow.style.transform = "rotate(0deg)";
+      }
+    }
+  </script>
+  
 </body>
 </html>
