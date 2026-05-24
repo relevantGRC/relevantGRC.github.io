@@ -460,4 +460,253 @@
         <div class="name">Nathaniel Konu</div>
         <div class="title">Senior Compliance Engineer</div>
       </div>
-      <button class="sidebar-hamburger" onclick="toggleSidebarMenu()" aria-label="Toggle navigation menu
+      <button class="sidebar-hamburger" onclick="toggleSidebarMenu()" aria-label="Toggle navigation menu">☰</button>
+    </div>
+
+    <div class="nav-section-label">Explore</div>
+    <ul class="sidebar-nav" id="sidebarNav">
+      <li class="nav-item active" data-target="overview-view"><a onclick="switchView('overview-view')">Overview <span class="index">1</span></a></li>
+      <li class="nav-item" data-target="labs-view"><a onclick="switchView('labs-view')">Technical Labs <span class="index">2</span></a></li>
+      <li class="nav-item" data-target="expertise-view"><a onclick="switchView('expertise-view')">Core Capabilities <span class="index">3</span></a></li>
+      <li class="nav-item" data-target="credentials-view"><a onclick="switchView('credentials-view')">Certifications <span class="index">4</span></a></li>
+    </ul>
+
+    <div class="nav-section-label">Connect</div>
+    <ul class="sidebar-nav" style="display: flex;">
+      <li><a href="https://www.linkedin.com/in/nkonu/" target="_blank">LinkedIn <span class="index">↗</span></a></li>
+      <li><a href="https://github.com/relevantGRC" target="_blank">GitHub <span class="index">↗</span></a></li>
+      <li><a href="https://www.youtube.com/@relevantGRC" target="_blank">YouTube <span class="index">↗</span></a></li>
+      <li><a href="mailto:Nathanielkonu10@gmail.com">Email <span class="index">↗</span></a></li>
+    </ul>
+  </aside>
+
+  <main>
+    
+    <div id="overview-view" class="content-view active-view">
+      <section class="hero-type-block">
+        <h1>Hey, I'm Nathaniel.<br><span>I engineer compliance.</span></h1>
+        <p class="hero-sub-text">
+          Bridging the gap between rigid enterprise GRC governance and modern infrastructure execution. 
+          I build technical guardrails, continuous mapping systems, and automated policy frameworks directly into the engineering loop.
+        </p>
+        <div class="hero-action-buttons">
+          <a onclick="switchView('labs-view')" class="btn btn-primary">Explore Labs</a>
+          <a href="https://relevantGRC.github.io/Resume.pdf" download class="btn btn-secondary">Download CV</a>
+        </div>
+      </section>
+
+      <div class="dashboard-grid">
+        <div class="info-card">
+          <div class="info-row">
+            <div class="info-label">Status</div>
+            <div class="info-val highlight">Open to Opportunities</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Location</div>
+            <div class="info-val">El Paso, TX</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Organization</div>
+            <div class="info-val">Clario</div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-row">
+            <div class="info-label">Auditing Track</div>
+            <div class="info-val">ISO 27001 Lead Auditor</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Framework Focus</div>
+            <div class="info-val">NIST 800-53 / FedRAMP / SOC2</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Automation Lab</div>
+            <div class="info-val">OPA / Rego / Checkov</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="labs-view" class="content-view">
+      <h2 class="section-headline">Technical Projects & Labs</h2>
+      <div class="dashboard-grid">
+        
+        <div class="product-card">
+          <div class="product-display">
+            <div class="mock-window">
+              <div class="mock-header">
+                <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+              </div>
+              <span style="color: #6366f1;">{</span><br>
+              &nbsp;&nbsp;"framework": "ISO27001:2022",<br>
+              &nbsp;&nbsp;"control": "A.5.15",<br>
+              &nbsp;&nbsp;"status": "verifiable"<br>
+              <span style="color: #6366f1;">}</span>
+            </div>
+          </div>
+          <div class="product-details">
+            <div class="product-info">
+              <h3>GRC Governance Vault</h3>
+              <p>Obsidian structured framework mapping using JSON logic.</p>
+            </div>
+            <span class="product-tag" onclick="toggleVideoDrop('video1')" style="cursor:pointer;">Lab Video</span>
+          </div>
+          <div id="video1" style="display: none; padding: 0 20px 20px 20px;">
+            <iframe width="100%" height="180" src="https://www.youtube.com/embed/AjuwvDlSYiQ" frameborder="0" allowfullscreen style="border-radius:6px;"></iframe>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-display">
+            <div class="mock-window">
+              <div class="mock-header">
+                <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+              </div>
+              <span style="color: #00f5d4;">package</span> tf_compliance<br><br>
+              deny[msg] {<br>
+              &nbsp;&nbsp;input.resource.aws_security_group<br>
+              &nbsp;&nbsp;msg := "Open SSH detected"<br>
+              }
+            </div>
+          </div>
+          <div class="product-details">
+            <div class="product-info">
+              <h3>Policy-as-Code Lab</h3>
+              <p>Automated Terraform structural tests via Checkov & Rego rules.</p>
+            </div>
+            <span class="product-tag" onclick="toggleVideoDrop('video2')" style="cursor:pointer;">Lab Video</span>
+          </div>
+          <div id="video2" style="display: none; padding: 0 20px 20px 20px;">
+            <iframe width="100%" height="180" src="https://www.youtube.com/embed/AjuwvDlSYiQ" frameborder="0" allowfullscreen style="border-radius:6px;"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="expertise-view" class="content-view">
+      <h2 class="section-headline">Core Competencies</h2>
+      <div class="dashboard-grid">
+        <div class="info-card" style="padding: 20px;">
+          <h4 style="font-size:14px; margin-bottom:12px; color:var(--accent-teal);">Compliance Automation</h4>
+          <div style="font-size:13px; color:var(--text-muted); display:flex; flex-direction:column; gap:8px;">
+            <div>• Policy-as-Code Architecture (OPA/Rego)</div>
+            <div>• Static Infrastructure Auditing via Checkov</div>
+            <div>• Continuous Technical Guardrails Implementation</div>
+          </div>
+        </div>
+
+        <div class="info-card" style="padding: 20px;">
+          <h4 style="font-size:14px; margin-bottom:12px; color:var(--accent);">Cloud Environments</h4>
+          <div style="font-size:13px; color:var(--text-muted); display:flex; flex-direction:column; gap:8px;">
+            <div>• AWS Cloud Architecture & Core Identity Access Management</div>
+            <div>• Multi-Cloud Strategy (Azure Policies & GCP Config Maps)</div>
+            <div>• Automated Control Attestation Artifact Collection</div>
+          </div>
+        </div>
+
+        <div class="info-card" style="padding: 20px;">
+          <h4 style="font-size:14px; margin-bottom:12px; color:var(--text);">Standards Architecture</h4>
+          <div style="font-size:13px; color:var(--text-muted); display:flex; flex-direction:column; gap:8px;">
+            <div>• ISO/IEC Series 27001, 27701, and AI Governance 42001</div>
+            <div>• Federal Security Programs (NIST 800-53, CJIS, FedRAMP)</div>
+            <div>• Human-Centric Security Awareness Metrics Track</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="credentials-view" class="content-view">
+      <h2 class="section-headline">Credentials & Verifications</h2>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        
+        <a href="https://www.credly.com/badges/f00f38c7-f87d-40c7-a627-cc9a8c3a03a3/public_url" target="_blank" class="clean-list-item">
+          <div class="item-main">
+            <h4>Certified Information Systems Auditor (CISA)</h4>
+            <p>ISACA</p>
+          </div>
+          <div class="item-meta">Verified ↗</div>
+        </a>
+
+        <a href="https://www.credly.com/badges/ea12d003-54d0-4f68-9167-eabddb20b803" target="_blank" class="clean-list-item">
+          <div class="item-main">
+            <h4>Certified Information Security Manager (CISM)</h4>
+            <p>ISACA</p>
+          </div>
+          <div class="item-meta">Verified ↗</div>
+        </a>
+
+        <a href="https://www.credly.com/badges/2c68a0f7-2531-488f-9826-89563c74fa26" target="_blank" class="clean-list-item">
+          <div class="item-main">
+            <h4>ISO/IEC 27001 Senior Lead Auditor</h4>
+            <p>PECB</p>
+          </div>
+          <div class="item-meta">Verified ↗</div>
+        </a>
+
+        <a href="https://www.credly.com/badges/85993bc3-b0ed-4deb-8b1c-4e3b06cfd05f" target="_blank" class="clean-list-item">
+          <div class="item-main">
+            <h4>ISO/IEC 42001 Artificial Intelligence Lead Auditor</h4>
+            <p>Mastermind</p>
+          </div>
+          <div class="item-meta">Verified ↗</div>
+        </a>
+
+      </div>
+    </div>
+
+    <footer>
+      <span>&copy; 2026 Nathaniel Konu. Built for the future of technical governance.</span>
+    </footer>
+
+  </main>
+
+  <script>
+    function switchView(viewId) {
+      // 1. Hide all views
+      const views = document.querySelectorAll('.content-view');
+      views.forEach(view => {
+        view.classList.remove('active-view');
+      });
+
+      // 2. Show targeted view
+      const targetView = document.getElementById(viewId);
+      if (targetView) {
+        targetView.classList.add('active-view');
+      }
+
+      // 3. Update sidebar active status visuals
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+        if (item.getAttribute('data-target') === viewId) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // 4. Smooth scroll window back up to dashboard top boundary on switch
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Close mobile navigation drawer if open
+      document.getElementById('sidebarNav').classList.remove('active');
+    }
+
+    function toggleSidebarMenu() {
+      const nav = document.getElementById('sidebarNav');
+      nav.classList.toggle('active');
+    }
+
+    function toggleVideoDrop(id) {
+      const videoDiv = document.getElementById(id);
+      if (videoDiv.style.display === "none" || videoDiv.style.display === "") {
+        videoDiv.style.display = "block";
+      } else {
+        videoDiv.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
