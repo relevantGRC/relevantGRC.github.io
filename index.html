@@ -466,8 +466,24 @@
 
     <div class="nav-section-label">Explore</div>
     <ul class="sidebar-nav" id="sidebarNav">
-      <li class="nav-item active" data-target="about-view"><a onclick="switchView('about-view')">About <span class="index">1</span></a></li>
-      <li class="nav-item" data-target="labs-view"><a onclick="switchView('labs-view')">Projects <span class="index">2</span></a></li>
+     <li class="nav-item active" data-target="about-view">
+      <a onclick="switchView('about-view')">
+        <div class="link-content">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>About</span>
+        </div>
+        <span class="index">1</span>
+      </a>
+    </li>
+    <li class="nav-item" data-target="labs-view">
+      <a onclick="switchView('labs-view')">
+        <div class="link-content">
+          <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+          <span>Projects</span>
+        </div>
+        <span class="index">2</span>
+      </a>
+    </li>
     </ul>
     
     <div class="nav-section-label">Resources</div>
