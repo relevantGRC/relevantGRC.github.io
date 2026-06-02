@@ -802,7 +802,7 @@
       readerDiv.innerHTML = '<p style="color: var(--accent-teal);">Streaming content from secure storage...</p>';
       
       // Reaches directly into your separate folder
-      fetch('/_posts/' + fileName)
+      fetch('/posts/' + fileName)
         .then(response => {
           if (!response.ok) throw new Error('Article not found');
           return response.text();
