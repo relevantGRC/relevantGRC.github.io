@@ -2,9 +2,10 @@
 <p style="color: var(--text-dark); font-size: 11px; margin-bottom: 12px;">Published: June 01, 2026</p>
 
 
-<h3>The Problem With How We Collect Evidence Today</h3>
-
 <p>
+The Problem With How We Collect Evidence Today
+
+
 Every audit cycle, the same ritual plays out across compliance teams worldwide.
 
 A GRC analyst opens a spreadsheet. They paste in a list of control IDs. Then they start the chase — emailing engineers for screenshots, pulling exports from SaaS dashboards, downloading logs manually, and stitching everything together in a shared drive folder named something like `SOC2_Evidence_FINAL_v3_USE_THIS_ONE`.
@@ -15,9 +16,9 @@ Manual evidence collection is slow, inconsistent, and fragile. Evidence goes sta
 
 **Evidence as Code** is the engineering discipline that solves this. It treats compliance evidence as a structured, automated, version-controlled artifact — not a folder of screenshots.
 
-</p>
 
-## What Is Evidence as Code?
+
+What Is Evidence as Code?
 
 Evidence as Code (EaC) is the practice of programmatically collecting, structuring, storing, and versioning the artifacts that prove a control is operating effectively.
 
@@ -31,11 +32,9 @@ The result is evidence that is:
 - **Version-controlled** — full history of every control state over time
 - **Audit-ready** — queryable, linkable, and reproducible on demand
 
----
+ The Four Layers of Evidence as Code
 
-## The Four Layers of Evidence as Code
-
-### 1. Collection
+ 1. Collection
 
 Evidence collection is triggered either on a schedule (cron, GitHub Actions, Lambda) or on an event (a deployment, an access change, a configuration drift alert).
 
@@ -46,8 +45,7 @@ Sources include:
 - **CI/CD pipelines** (GitHub Actions, GitLab) → deployment records, code review approvals
 - **Security tools** (Wiz, Lacework, Snyk) → vulnerability scan results
 - **SaaS platforms** (Slack, Jira, Google Workspace) → policy acknowledgments, ticket records
-
-### 2. Structuring
+2. Structuring
 
 Raw API responses are normalized into a consistent schema. Every evidence artifact should carry:
 
@@ -66,7 +64,7 @@ Raw API responses are normalized into a consistent schema. Every evidence artifa
 
 This schema makes evidence machine-readable, linkable to specific controls, and comparable across time periods.
 
-### 3. Storage
+3. Storage
 
 Structured evidence is stored in a version-controlled repository (Git) or an immutable object store (S3 with Object Lock, GCS with retention policy). Git gives you a complete audit trail of every collection run. Object Lock gives you regulatory-grade immutability.
 
@@ -76,9 +74,8 @@ For most teams, a Git repository is the right starting point. Every evidence fil
 
 For evidence that requires human sign-off (a policy review, a risk acceptance, a vendor assessment), attestation workflows are built as code too. A pull request is opened automatically. A named reviewer approves it. The approval is the evidence — recorded in Git history with the reviewer's identity, timestamp, and the exact artifact they approved.
 
----
 
-## A Real Example: Automating MFA Enrollment Evidence for SOC 2 CC6.1
+A Real Example: Automating MFA Enrollment Evidence for SOC 2 CC6.1
 
 SOC 2 Common Criteria 6.1 requires that logical access to systems is restricted to authorized users. One key sub-control is enforcing MFA across all users with access to production systems.
 
@@ -140,9 +137,7 @@ if __name__ == "__main__":
 
 This script runs on a schedule via GitHub Actions. The output is committed to a `evidence/` directory in your compliance repository. Every quarter, your auditor gets a link to a folder of cryptographically-hashed, timestamped, API-sourced evidence files — not a screenshot.
 
----
-
-## Connecting Evidence to Controls
+Connecting Evidence to Controls
 
 Evidence only has audit value when it is explicitly linked to a control requirement. Your evidence schema should always carry:
 
@@ -154,9 +149,7 @@ Evidence only has audit value when it is explicitly linked to a control requirem
 
 When you build this linkage into every evidence artifact, your compliance repository becomes a queryable control database — not a document dump.
 
----
-
-## Mapping to Frameworks
+Mapping to Frameworks
 
 Evidence as Code artifacts can be mapped across multiple frameworks simultaneously. A single MFA enrollment report can serve as evidence for:
 
@@ -169,9 +162,7 @@ Evidence as Code artifacts can be mapped across multiple frameworks simultaneous
 
 Multi-framework mapping eliminates duplicate evidence collection. One automated artifact satisfies multiple auditors.
 
----
-
-## Getting Started: Your First Evidence Pipeline
+Getting Started: Your First Evidence Pipeline
 
 If you are starting from zero, this is the sequence:
 
@@ -184,7 +175,6 @@ If you are starting from zero, this is the sequence:
 
 Once the first pipeline is running, the pattern repeats. Each new control is another collector, another scheduled job, another folder of dated artifacts.
 
----
 
 ## What Evidence as Code Is Not
 
@@ -194,14 +184,11 @@ A few clarifications to set expectations:
 - **It is not zero-effort.** Building collectors takes engineering time upfront. The return is compounding — once built, they run forever.
 - **It is not only for engineering teams.** With the right abstraction layer, GRC analysts can consume and query evidence without touching code.
 
----
-
-## The Compliance Future Is Automated
+The Compliance Future Is Automated
 
 The audit of 2030 will not involve a shared drive. It will involve an auditor querying a structured evidence repository, running assertions against control states across a twelve-month window, and receiving a real-time pass/fail report.
 
 Evidence as Code is how you build toward that future today — one automated collector at a time.
 
----
-
 *relevantGRC publishes practical GRC engineering content for compliance teams building automated, evidence-driven programs. Follow on [GitHub](https://github.com/relevantGRC) for templates, collectors, and control libraries.*
+</p>
