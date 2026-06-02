@@ -1,0 +1,214 @@
+---
+title: "Evidence as Code: How to Stop Collecting Screenshots and Start Automating Compliance Proof"
+date: 2025-06-01
+draft: false
+tags: ["Evidence as Code", "Compliance Automation", "SOC 2", "ISO 27001", "GRC Engineering", "DevSecOps"]
+categories: ["Compliance as Code"]
+author: "relevantGRC"
+description: "Manual evidence collection is the silent killer of audit efficiency. Here's how to replace it with automated, tamper-evident, always-fresh compliance proof."
+showToc: true
+TocOpen: true
+---
+
+## The Problem With How We Collect Evidence Today
+
+Every audit cycle, the same ritual plays out across compliance teams worldwide.
+
+A GRC analyst opens a spreadsheet. They paste in a list of control IDs. Then they start the chase — emailing engineers for screenshots, pulling exports from SaaS dashboards, downloading logs manually, and stitching everything together in a shared drive folder named something like `SOC2_Evidence_FINAL_v3_USE_THIS_ONE`.
+
+This is not a process. It is archaeology.
+
+Manual evidence collection is slow, inconsistent, and fragile. Evidence goes stale the moment it is collected. Screenshots can be staged. Version history is a mess. And when auditors ask follow-up questions six weeks later, nobody can reproduce exactly what was true on a specific date.
+
+**Evidence as Code** is the engineering discipline that solves this. It treats compliance evidence as a structured, automated, version-controlled artifact — not a folder of screenshots.
+
+---
+
+## What Is Evidence as Code?
+
+Evidence as Code (EaC) is the practice of programmatically collecting, structuring, storing, and versioning the artifacts that prove a control is operating effectively.
+
+Instead of a human manually exporting a user access report, a script pulls it from your identity provider API on a schedule, formats it as structured JSON, signs it cryptographically, and commits it to a repository with a timestamp.
+
+The result is evidence that is:
+
+- **Automated** — collected without human intervention
+- **Timestamped** — precisely dated to when the control state was captured
+- **Tamper-evident** — cryptographic hashes detect any modification
+- **Version-controlled** — full history of every control state over time
+- **Audit-ready** — queryable, linkable, and reproducible on demand
+
+---
+
+## The Four Layers of Evidence as Code
+
+### 1. Collection
+
+Evidence collection is triggered either on a schedule (cron, GitHub Actions, Lambda) or on an event (a deployment, an access change, a configuration drift alert).
+
+Sources include:
+
+- **Identity providers** (Okta, Entra ID) → user access lists, MFA enrollment status
+- **Cloud control planes** (AWS Config, GCP Asset Inventory) → resource configurations
+- **CI/CD pipelines** (GitHub Actions, GitLab) → deployment records, code review approvals
+- **Security tools** (Wiz, Lacework, Snyk) → vulnerability scan results
+- **SaaS platforms** (Slack, Jira, Google Workspace) → policy acknowledgments, ticket records
+
+### 2. Structuring
+
+Raw API responses are normalized into a consistent schema. Every evidence artifact should carry:
+
+```json
+{
+  "evidence_id": "eac-okta-mfa-2025-06-01",
+  "control_id": "CC6.1",
+  "framework": "SOC2",
+  "collected_at": "2025-06-01T08:00:00Z",
+  "source": "okta",
+  "collector_version": "1.4.2",
+  "data": { ... },
+  "hash": "sha256:abc123..."
+}
+```
+
+This schema makes evidence machine-readable, linkable to specific controls, and comparable across time periods.
+
+### 3. Storage
+
+Structured evidence is stored in a version-controlled repository (Git) or an immutable object store (S3 with Object Lock, GCS with retention policy). Git gives you a complete audit trail of every collection run. Object Lock gives you regulatory-grade immutability.
+
+For most teams, a Git repository is the right starting point. Every evidence file is a commit. Every commit is a point-in-time record of control state.
+
+### 4. Attestation
+
+For evidence that requires human sign-off (a policy review, a risk acceptance, a vendor assessment), attestation workflows are built as code too. A pull request is opened automatically. A named reviewer approves it. The approval is the evidence — recorded in Git history with the reviewer's identity, timestamp, and the exact artifact they approved.
+
+---
+
+## A Real Example: Automating MFA Enrollment Evidence for SOC 2 CC6.1
+
+SOC 2 Common Criteria 6.1 requires that logical access to systems is restricted to authorized users. One key sub-control is enforcing MFA across all users with access to production systems.
+
+Manually, this means someone exports a user list from Okta every quarter, highlights anyone without MFA, and attaches a screenshot to a shared drive folder.
+
+With Evidence as Code, it looks like this:
+
+```python
+import requests
+import json
+import hashlib
+from datetime import datetime, timezone
+
+OKTA_DOMAIN = "your-org.okta.com"
+OKTA_TOKEN = "your-api-token"  # pulled from secrets manager in practice
+
+def collect_mfa_evidence():
+    headers = {"Authorization": f"SSWS {OKTA_TOKEN}"}
+    users = requests.get(
+        f"https://{OKTA_DOMAIN}/api/v1/users?filter=status eq \"ACTIVE\"",
+        headers=headers
+    ).json()
+
+    factors_by_user = {}
+    for user in users:
+        uid = user["id"]
+        factors = requests.get(
+            f"https://{OKTA_DOMAIN}/api/v1/users/{uid}/factors",
+            headers=headers
+        ).json()
+        factors_by_user[uid] = {
+            "email": user["profile"]["email"],
+            "mfa_enrolled": len(factors) > 0,
+            "factors": [f["factorType"] for f in factors]
+        }
+
+    evidence = {
+        "evidence_id": f"eac-okta-mfa-{datetime.now(timezone.utc).date()}",
+        "control_id": "CC6.1",
+        "framework": "SOC2",
+        "collected_at": datetime.now(timezone.utc).isoformat(),
+        "source": "okta",
+        "data": factors_by_user,
+    }
+
+    raw = json.dumps(evidence, sort_keys=True).encode()
+    evidence["hash"] = "sha256:" + hashlib.sha256(raw).hexdigest()
+
+    filename = f"evidence/okta-mfa-{datetime.now(timezone.utc).date()}.json"
+    with open(filename, "w") as f:
+        json.dump(evidence, f, indent=2)
+
+    print(f"Evidence collected: {filename}")
+    return evidence
+
+if __name__ == "__main__":
+    collect_mfa_evidence()
+```
+
+This script runs on a schedule via GitHub Actions. The output is committed to a `evidence/` directory in your compliance repository. Every quarter, your auditor gets a link to a folder of cryptographically-hashed, timestamped, API-sourced evidence files — not a screenshot.
+
+---
+
+## Connecting Evidence to Controls
+
+Evidence only has audit value when it is explicitly linked to a control requirement. Your evidence schema should always carry:
+
+- **Framework** (SOC 2, ISO 27001, ISO 42001, NIST CSF)
+- **Control ID** (CC6.1, A.9.2.1, PR.AC-1)
+- **Control description** (what the evidence proves)
+- **Collection frequency** (continuous, daily, quarterly)
+- **Pass/fail assertion** (did the control operate effectively?)
+
+When you build this linkage into every evidence artifact, your compliance repository becomes a queryable control database — not a document dump.
+
+---
+
+## Mapping to Frameworks
+
+Evidence as Code artifacts can be mapped across multiple frameworks simultaneously. A single MFA enrollment report can serve as evidence for:
+
+| Framework | Control | Requirement |
+|-----------|---------|-------------|
+| SOC 2 | CC6.1 | Logical access restricted to authorized users |
+| ISO 27001 | A.9.4.2 | Secure log-on procedures |
+| NIST CSF | PR.AC-1 | Identities and credentials are managed |
+| ISO 42001 | A.6.1 | Human oversight of AI system access |
+
+Multi-framework mapping eliminates duplicate evidence collection. One automated artifact satisfies multiple auditors.
+
+---
+
+## Getting Started: Your First Evidence Pipeline
+
+If you are starting from zero, this is the sequence:
+
+1. **Pick one high-frequency control** — MFA enrollment, encryption at rest, or backup verification are good starting points
+2. **Identify the authoritative API source** — Okta, AWS Config, your cloud provider
+3. **Write a collection script** — Python or Bash, pulling from the API and writing structured JSON
+4. **Schedule it** — GitHub Actions workflow on a cron trigger
+5. **Commit output to a repo** — `evidence/` directory, one file per collection run
+6. **Link it to your control register** — update your GRC tool or a simple YAML control map
+
+Once the first pipeline is running, the pattern repeats. Each new control is another collector, another scheduled job, another folder of dated artifacts.
+
+---
+
+## What Evidence as Code Is Not
+
+A few clarifications to set expectations:
+
+- **It is not a GRC platform replacement.** Evidence as Code is the data layer. You still need something to map controls, track exceptions, and generate reports.
+- **It is not zero-effort.** Building collectors takes engineering time upfront. The return is compounding — once built, they run forever.
+- **It is not only for engineering teams.** With the right abstraction layer, GRC analysts can consume and query evidence without touching code.
+
+---
+
+## The Compliance Future Is Automated
+
+The audit of 2030 will not involve a shared drive. It will involve an auditor querying a structured evidence repository, running assertions against control states across a twelve-month window, and receiving a real-time pass/fail report.
+
+Evidence as Code is how you build toward that future today — one automated collector at a time.
+
+---
+
+*relevantGRC publishes practical GRC engineering content for compliance teams building automated, evidence-driven programs. Follow on [GitHub](https://github.com/relevantGRC) for templates, collectors, and control libraries.*
